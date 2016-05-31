@@ -96,9 +96,11 @@ public class TransporteDAOImplement implements TransporteDAOLocal {
 	public List<Transporte> buscarListaTransporte(Transporte obj) throws Exception {
 		List<Transporte> lista=null;
 		try {
-			Query q = cn.em.createQuery("select t from Transporte t where t.descTransporte like :p1 and t.idMarca = :p2");
+			Query q = cn.em.createQuery("select t from Transporte t where"
+					+ " t.descTransporte like :p1 and t.idMarca = :p2");
 			q.setParameter("p1",'%'+obj.getDescTransporte()+'%' );
 			q.setParameter("p2", obj.getIdMarca());
+			//COMENTAIROPOSGERJGPOERJO
 			lista=q.getResultList();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
